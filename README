@@ -29,3 +29,6 @@ opensim SomeApp sqlite3 some_sqlite_database.sqlite
         opensim SomeApp sqlite3 Documents/db.sqlite
             This would open SomeApp.app/Documents/db.sqlite
 
+opensim updateLinks ~/iPhoneSimulatorApps
+    Creats symlinks for all installed apps in ~/iPhoneSimulatorApps
+    Note: <link_dir> must already exist.
