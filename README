@@ -1,4 +1,8 @@
-opensim is a shell script that makes accessing applications on the iPhone simulator a breeze.
+    Opensim is a shell script that makes accessing applications on the iPhone
+simulator a breeze.
+
+Based on opensim by Craig Hockenberry
+http://furbo.org/2009/03/03/open-sesame/
 
 
 Examples.
