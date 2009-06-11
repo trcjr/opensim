@@ -1,0 +1,27 @@
+opensim is a shell script that makes accessing applications on the iPhone simulator a breeze.
+
+
+Examples.
+
+opensim SomeApp Preferences
+    Opens the Preferences folder for SomeApp.
+    ( ~/Library/Application Support/iPhone Simulator/User/Applications/<GUID>/SomeApp.app/Preferences )
+
+opensim SomeApp Documents
+    Opens the Documents folder for SomeApp
+    ( ~/Library/Application Support/iPhone Simulator/User/Applications/<GUID>/SomeApp.app/Documents )
+
+opensim SomeApp sqlite3 some_sqlite_database.sqlite
+    Opens runs sqlite3 with the full path to some_sqlite_database.sqlite as its
+    first argument.
+    ( sqlite3 ~/Library/Application Support/iPhone Simulator/User/Applications/<GUID>/SomeApp.app/Documents/some_sqlite_database.sqlite )
+
+    Note:
+        If you have more than one file with the same name in two different
+        directories, ie db.sqlite in Documents/ and db.sqlite in SomeApp.app/
+        you would need to specify it by doing something like:
+        opensim SomeApp sqlite3 app/db.sqlite
+            This would open SomeApp.app/db.sqlite
+        opensim SomeApp sqlite3 Documents/db.sqlite
+            This would open SomeApp.app/Documents/db.sqlite
+

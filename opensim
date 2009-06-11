@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# Version  1.1
+#  A simple wrapper to make accessing iPhone projects easier.
+##
+#  Created by Theodore Campbell on 2009-06-11.
+#  Copyright (c) 2009 Theodore Campbell. All rights reserved.
+##
+# Based on opensim by Craig Hockenberry
+# http://furbo.org/2009/03/03/open-sesame/
+###
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+###
+
+if [ -z "${1}" ]; then
+    echo "usage: ${0} <app> [ Preferences | Documents | <cmd> <file> ]"
+    echo "  ex: ${0} SomeApp Preferences"
+    echo "      Opens the Preferences folder"
+    echo "  ex: ${0} SomeApp Documents"
+    echo "      Opens the Documents folder"
+    echo "  ex: ${0} SomeApp sqlite3 some_sqlite_database.sqlite"
+    echo "      Opens runs sqlite3 with the full path to some_sqlite_database.sqlite as its first arguement"
+else
+    app=`ls -1td ~/Library/Application\ Support/iPhone\ Simulator/User/Applications/*/${1}.app`
+    dir=`dirname "${app}"`
+
+    if [ "${2}" = "" ]; then
+        open "${dir}"
+        exit
+    fi
+
+    if [ "${2}" = "Preferences" ]; then
+        open "${dir}/Library/Preferences"
+    elif [ "${2}" = "Documents" ]; then
+        open "${dir}/Documents"
+    else
+        find -E "${dir}" -regex '.*'${3} -exec ${2} {} \;
+    fi
+fi
