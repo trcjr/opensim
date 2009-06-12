@@ -67,6 +67,7 @@ else
     # First argument was not updateLinks
     else
         app=`ls -1td ~/Library/Application\ Support/iPhone\ Simulator/User/Applications/*/${1}.app`
+        dir=`dirname "$app"`
 
         # If just an <app_name> was specified open the App's main directory.
         if [ -z "${2}" ]; then
